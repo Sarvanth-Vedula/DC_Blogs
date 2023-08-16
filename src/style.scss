@@ -147,7 +147,7 @@ $blue:#049df5;
 }
 
 .btn-add {
-    background: #bf7034 !important;
+    background: #049df5 !important;
 	@include border-radius(0!important);
 	color: #fff!important;
 	padding: 10px 50px!important;
@@ -163,17 +163,13 @@ $blue:#049df5;
 }
 
 
-.catg-dropdown{
+.catG-dropdown{
 	width: 100%;
     border-radius: 4px;
     height: 45px;
     color: #806a78;
 }
 
-.catg-dropdown:focus {
-	outline: none !important;
-	border-color: yellow;
-}
 
 .trending {
 	float: left;
