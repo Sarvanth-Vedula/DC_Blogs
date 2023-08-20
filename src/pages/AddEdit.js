@@ -4,7 +4,7 @@ import "@pathofdev/react-tag-input/build/index.css";
 import {useNavigate,useParams} from "react-router-dom";
 import { db, storage } from '../firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { async } from '@firebase/util';
+// import { async } from '@firebase/util';
 import { addDoc, collection, doc, getDoc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
@@ -102,16 +102,17 @@ const AddEdit = ({user,setActive}) => {
        file&&uploadFile();
     } , [file]);  
   useEffect(()=>{
-    id&&getBlogDetail();  
-  },[id]);
-  const getBlogDetail=async()=>{
-    const docRef=doc(db,"blogCollections",id);
-    const snapshot=await getDoc(docRef);
-    if(snapshot.exists()){
-      setForm({...snapshot.data()});
+    const getBlogDetail=async()=>{
+      const docRef=doc(db,"blogCollections",id);
+      const snapshot=await getDoc(docRef);
+      if(snapshot.exists()){
+        setForm({...snapshot.data()});
+      }
+      setActive(null);
     }
-    setActive(null);
-  }
+    id&&getBlogDetail();  
+  },[id,setActive]);
+  
   return (
     <div className="container-fluid mb-4">
       <div className="container">
